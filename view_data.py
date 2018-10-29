@@ -17,17 +17,38 @@ BASE.metadata.create_all(connection)
 Session = sessionmaker(bind=connection)
 session = Session()
 
-# Print all customers
-print("\nCustomers:")
-for customer in session.query(Customer).all():
-    print(customer)
+# Flask code
 
-# Print all products
-print("\nProducts:")
-for product in session.query(Product).all():
-    print(product)
+from flask import Flask
+app = Flask(__name__)
 
-# Print all orders
-print("\nOrders:")
-for order in session.query(Order).all():
-    print(order)
+@app.route("/")
+def mainPage():
+    return """
+            <a href='customers'>View Customers</a>
+            <br>
+            <a href='products'>View Products</a>
+            <br>
+            <a href='orders'>View Orders</a>
+           """
+
+@app.route("/customers")
+def getCustomers():
+    output = ""
+    for customer in session.query(Customer).all():
+        output += str(customer) + "\n"
+    return output
+
+@app.route("/products")
+def getProducts():
+    output = ""
+    for product in session.query(Product).all():
+        output += str(product) + "\n"
+    return output
+
+@app.route("/orders")
+def getOrders():
+    output = ""
+    for order in session.query(Order).all():
+        output += str(order) + "\n"
+    return output

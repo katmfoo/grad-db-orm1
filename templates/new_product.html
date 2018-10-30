@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create New Product
+{% endblock %}
+
+{% block content %}
+<form action="{{ url_for('insertProduct') }}" method='post'>
+    <table>
+        <tr>
+            <td>
+                <label for='product_code'>Product Code:</label>
+            </td>
+            <td>
+                <input type='text' name='product_code'>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for='name'>Product Name:</label>
+            </td>
+            <td>
+                <input type='text' name='name'>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for='cost'>Product Cost:</label>
+            </td>
+            <td>
+                <input type='number' name='cost'>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for='minimum_supply_level'>Minimum Supply Level:</label>
+            </td>
+            <td>
+                <input type='text' name='minimum_supply_level'>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for='current_supply_level'>Current Supply Level:</label>
+            </td>
+            <td>
+                <input type='text' name='current_supply_level'>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <input type='submit'>
+</form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create New Customer
+{% endblock %}
+
+{% block content %}
+<form action="{{ url_for('insertCustomer') }}" method='post'>
+    <table>
+        <tr>
+            <td>
+                <label for='first_name'>First Name:</label>
+            </td>
+            <td>
+                <input type='text' name='first_name'>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for='last_name'>Last Name:</label>
+            </td>
+            <td>
+                <input type='text' name='last_name'>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <input type='submit'>
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <strong>{{ message }}</strong><br>
+        {% endfor %}
+        <br>
+    {% endif %}
+{% endwith %} 
+
+<a href="/customers">Customers</a> <a href="/products">Products</a> <a href="/orders">Orders</a>
+
+<h1>{% block title %}{% endblock %}</h1>
+
+{% block content %}{% endblock %}

@@ -1,18 +1,21 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{ product.name }} (ID: {{ product.product_id }})
+    {{ product.name }}
 {% endblock %}
 
 
 {% block content %}
-<p>This product's code is {{ product.product_code }} and costs ${{ product.cost }}. Its current supply level is {{ product.current_supply_level }} and its minimum supply level is {{ product.minimum_supply_level }}.</p>
+    <p>This product's code is {{ product.product_code }} and costs ${{ product.cost }}. Its current supply level is {{ product.current_supply_level }} and its minimum supply level is {{ product.minimum_supply_level }}.</p>
 
-<h2>Orders</h2>
-<p>This product is in the following orders.</p>
-<ul>
-    {% for order in product.orders %}
-    <a href="/orders/{{ order.order_id }}"><li>Order ID {{ order.order_id }}</li></a>
-    {% endfor %}
-</ul>
+    <h2>Orders</h2>
+    {% if product.orders %}
+        <ul>
+            {% for order in product.orders %}
+                <a href="/orders/{{ order.order_id }}"><li>Order ID {{ order.order_id }}</li></a>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>This product is not in any orders</p>
+    {% endif %}
 {% endblock %}

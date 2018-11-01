@@ -1,15 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}
-Customers
+    Customers
 {% endblock %}
 
 {% block content %}
-<ul>
-    {% for customer in customers %}
-    <a href="/customers/{{ customer.customer_id }}"><li>{{ customer.first_name }} {{ customer.last_name }}</li></a>
-    {% endfor %}
-</ul>
+    {% if customers %}
+        <ul>
+            {% for customer in customers %}
+                <a href="/customers/{{ customer.customer_id }}"><li>{{ customer.first_name }} {{ customer.last_name }}</li></a>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No customers have been created yet</p>
+    {% endif %}
 
-<a href="/customers/new">Create new customer</a>
+    <a href="/customers/new">Create new customer</a>
 {% endblock %}

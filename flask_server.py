@@ -11,7 +11,7 @@ from product import Product
 from order import Order
 
 # Create connection and session
-connection = create_engine('mysql+pymysql://root:@localhost:3306/graddb_orm1')
+connection = create_engine('mysql+pymysql://richealp7:shinypizza@elvis.rowan.edu:3306/richealp7')
 BASE.metadata.create_all(connection)
 Session = sessionmaker(bind=connection)
 session = Session()

@@ -1,13 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}
-Products
+    Products
 {% endblock %}
 
 {% block content %}
-<ul>
-    {% for product in products %}
-    <a href="/products/{{ product.product_id }}"><li>{{ product.product_code }}: {{ product.name }} (${{ product.cost }})</li></a>
-    {% endfor %}
-</ul>
+    {% if products %}
+        <ul>
+            {% for product in products %}
+                <a href="/products/{{ product.product_id }}"><li>{{ product.product_code }}: {{ product.name }} (${{ product.cost }})</li></a>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No products have been created yet</p>
+    {% endif %}
+
+    <a href="/products/new">Create new product</a>
 {% endblock %}

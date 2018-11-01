@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 
 {% block title %}
-Order ID {{ order.order_id }}
+    Order ID {{ order.order_id }}
 {% endblock %}
 
 {% block content %}
-<p>This order was placed by <a href="/customers/{{ order.customer.customer_id }}">{{ order.customer.first_name }} {{ order.customer.last_name }}</a> on {{ order.order_date }}.</p>
+    <p>This order was placed by <a href="/customers/{{ order.customer.customer_id }}">{{ order.customer.first_name }} {{ order.customer.last_name }}</a> on {{ order.order_date }}.</p>
 
-<h2>Products</h2>
-<p>This order contains the following products.</p>
-<ul>
-    {% for product in order.products %}
-    <a href="/products/{{ product.product_id }}"><li>{{ product.product_code }}: {{ product.name }} (${{ product.cost }})</li></a>
-    {% endfor %}
-</ul>
+    <h2>Products</h2>
+    <p>This order contains the following products.</p>
+    <ul>
+        {% for product in order.products %}
+            <a href="/products/{{ product.product_id }}"><li>{{ product.product_code }}: {{ product.name }} (${{ product.cost }})</li></a>
+        {% endfor %}
+    </ul>
 {% endblock %}

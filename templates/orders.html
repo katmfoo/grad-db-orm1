@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 
 {% block title %}
-Orders
+    Orders
 {% endblock %}
 
 {% block content %}
-<ul>
-    {% for order in orders %}
-    <a href="/orders/{{ order.order_id }}"><li>Order ID {{ order.order_id }} placed by {{ order.customer.first_name }} {{ order.customer.last_name }}</li></a>
-    {% endfor %}
-</ul>
+    {% if orders %}
+        <ul>
+            {% for order in orders %}
+                <a href="/orders/{{ order.order_id }}"><li>Order ID {{ order.order_id }} placed by {{ order.customer.first_name }} {{ order.customer.last_name }}</li></a>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No orders have been created yet</p>
+    {% endif %}
 {% endblock %}
